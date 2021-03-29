@@ -8,6 +8,8 @@ describe('SearchView', () => {
 
   const elementBySelector = selector => container.querySelector(selector);
   const render = component => ReactDOM.render(component, container);
+  const filterList =  [ { expression: 'hello', id: '1', name:'hello' }, { expression: 'hi', id: '2', name:'hi' } ];
+
   beforeEach(() => {
     container = document.createElement('div');
   });
@@ -31,12 +33,18 @@ describe('SearchView', () => {
   });
 
   it('renders filter elements in ul', () => {
-    const filterList =  [ { expression: 'hello', id: '1' }, { expression: 'hi', id: '2' } ];
     render(<SearchView filterList={filterList} />);
     const lists = container.querySelectorAll('#filterList li');
 
     expect(lists.length).toEqual(2);
     expect(lists[0].textContent).toMatch('hello');
     expect(lists[1].textContent).toMatch('hi');
+  });
+
+  it('renders filter remove button', () => {
+    render(<SearchView filterList={filterList} />);
+    const lists = container.querySelectorAll('#filterList li>input[type="button"]');
+
+    expect(lists.length).toEqual(2);
   });
 });

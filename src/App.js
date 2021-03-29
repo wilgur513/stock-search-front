@@ -13,7 +13,6 @@ function App() {
   return (
     <div> 
       <SearchView filterList={filterList}/>
-      <AddFilterView addFilter={addFilter}/>
     </div>
   );
 }
