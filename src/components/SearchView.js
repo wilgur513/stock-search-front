@@ -1,8 +1,41 @@
 import React from 'react';
 
-const FilterElement = ({expression}) =>{
+const ResultView = ({filterList})=>{
+  const Attributes = ()=>{  //이름, 수식, 아이디
+    return(
+      filterList.map(list => <th key={list.id} id={list.id} data-expression={list.expression}> {list.name} </th>)
+    )
+  }
+
   return(
-    <li>{expression}</li>
+    <div id="resultView">
+      <table>
+        <thead>
+          <tr>
+            <Attributes />
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  )
+}
+const FilterElement = ({expression}) =>{
+
+  const DeleteButton = ()=>{
+    return(
+      <input type="button" value="X"></input>
+    )
+  }
+  
+  return(
+    <li>{expression} <DeleteButton/></li>
   )
 }
 
@@ -37,6 +70,7 @@ export const SearchView = ({filterList=[]}) => {
     <div id="SearchViewDiv">
       <AddFilterButton />
       <ShowFilterView filterList={filterList}/>
+      <ResultView filterList={filterList}/>
     </div>
   );
 }
