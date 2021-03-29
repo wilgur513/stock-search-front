@@ -9,9 +9,10 @@ export const SearchView = () => {
     setFilterList(filterList.concat([filter]))
   }
 
-  const removeFilter = (filter) =>{
-    setFilterList(filterList.filter(f=>f.id !== filter.id))
+  const removeFilter = (id) =>{
+    setFilterList(filterList.filter(f=>f.id !== id))
   }
+
   return (
     <div id="SearchViewDiv">
       <AddFilterView filterList={filterList} addFilter={addFilter} removeFilter={removeFilter}/>

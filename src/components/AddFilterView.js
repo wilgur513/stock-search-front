@@ -1,8 +1,8 @@
 import React from 'react';
 
-const FilterElement = ({expression, removeFilter}) =>{
+const FilterElement = ({expression, id, removeFilter}) =>{
   const removeFilterHandler = ()=>{
-    removeFilter({ expression: 'hello', id: '1', name:'hello' })
+    removeFilter(id)
   }
 
   return(
@@ -33,8 +33,9 @@ const ShowFilterView = ({filterList, removeFilter})=> {
 
 const AddFilter = ({addFilter}) =>{
   const addFilterHandler = ()=>{
-    addFilter({ expression: 'hello', name:'hello' })
+    addFilter({ expression: 'hello', id: Date.now(), name:'hello' })
   }
+
   return(
     <div>
       <input id='addFilter' type="button" value="필터추가" onClick={addFilterHandler}/>
