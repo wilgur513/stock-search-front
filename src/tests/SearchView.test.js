@@ -1,17 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { SearchView } from "../components/SearchView";
+import {
+  createContainer,
+  elementBySelector,
+} from "./domHelper";
 
 
 describe('SearchView', () => {
-  let container;
+  let container, render;
 
-  const elementBySelector = selector => container.querySelector(selector);
-  const render = component => ReactDOM.render(component, container);
   const filterList =  [ { expression: 'hello', id: '1', name:'hello' }, { expression: 'hi', id: '2', name:'hi' } ];
 
   beforeEach(() => {
-    container = document.createElement('div');
+    ({render, container} = createContainer());
   });
 
   it('renders addFilterView, showFilterView ', ()=>{
@@ -30,21 +31,5 @@ describe('SearchView', () => {
     render(<SearchView />);
     expect(elementBySelector('#filterList')).not.toBeNull();
     expect(elementBySelector('#filterList').tagName).toEqual('UL');
-  });
-
-  it('renders filter elements in ul', () => {
-    render(<SearchView filterList={filterList} />);
-    const lists = container.querySelectorAll('#filterList li');
-
-    expect(lists.length).toEqual(2);
-    expect(lists[0].textContent).toMatch('hello');
-    expect(lists[1].textContent).toMatch('hi');
-  });
-
-  it('renders filter remove button', () => {
-    render(<SearchView filterList={filterList} />);
-    const lists = container.querySelectorAll('#filterList li>input[type="button"]');
-
-    expect(lists.length).toEqual(2);
   });
 });
