@@ -1,10 +1,10 @@
 import React from 'react';
-import {SearchView} from "./components/SearchView";
+import {StockSearchView} from "./components/StockSearchView";
 
 function App() {
   return (
     <div> 
-      <SearchView/>
+      <StockSearchView/>
     </div>
   );
 }
