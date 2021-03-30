@@ -1,11 +1,13 @@
 import React from 'react';
-import ReactTestUtils from 'react-dom/test-utils';
 import {FilterListView} from "../components/FilterListView";
 import {
   createContainer,
   elementBySelector,
-  elementsBySelector
-} from "./domHelper";
+  elementsBySelector,
+} from "./utils/domHelper";
+import {
+  click
+} from "./utils/eventSimulate"
 
 
 describe('SearchView', () => {
@@ -38,8 +40,8 @@ describe('SearchView', () => {
     const spy = jest.fn();
     render(<FilterListView filterList={filterList} removeFilterHandler={spy} />);
     const removeButtons = elementsBySelector('#filterList li input[type="button"]');
-    ReactTestUtils.Simulate.click(removeButtons[0]);
+    click(removeButtons[0]);
 
-    expect(spy).toHaveBeenCalledWith('1');
+    expect(spy).toHaveBeenCalledWith(filterList[0].id);
   });
 });

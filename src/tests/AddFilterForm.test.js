@@ -1,10 +1,12 @@
 import React from 'react';
-import ReactTestUtils from 'react-dom/test-utils';
+import {AddFilterForm} from "../components/AddFilterForm";
 import {
   createContainer,
   elementBySelector
-} from "./domHelper";
-import {AddFilterForm} from "../components/AddFilterForm";
+} from "./utils/domHelper";
+import {
+  click
+} from './utils/eventSimulate';
 
 describe('AddFilterForm', () => {
   let container, render;
@@ -22,7 +24,7 @@ describe('AddFilterForm', () => {
   it('addFilterHandler will be fired when click add filter button', () => {
     const spy = jest.fn();
     render(<AddFilterForm addFilterHandler={spy}/>);
-    ReactTestUtils.Simulate.click(elementBySelector('#addFilterButton'));
+    click(elementBySelector('#addFilterButton'));
 
     expect(spy).toHaveBeenCalledTimes(1);
   });
