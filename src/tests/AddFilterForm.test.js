@@ -27,5 +27,12 @@ describe('AddFilterForm', () => {
     click(elementBySelector('#addFilterButton'));
 
     expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(expect.any(Object));
+
+    expect(spy).toHaveBeenCalledWith(expect.objectContaining({
+      expression: expect.any(String),
+      id: expect.any(Number), // date.now() == Number
+      name: expect.any(String),
+    }));
   });
 });
