@@ -1,25 +1,25 @@
 import React from 'react';
-import {FilterListView} from "../components/FilterListView";
+import {FilterListView} from '../components/FilterListView';
 import {
   createContainer,
   elementBySelector,
   elementsBySelector,
-} from "./utils/domHelper";
+} from './utils/domHelper';
 import {
-  click
-} from "./utils/eventSimulate"
-
+  click,
+} from './utils/eventSimulate';
 
 describe('SearchView', () => {
-  let container, render;
+  let container;
+  let render;
 
-  const filterList =  [ { expression: 'exp1', id: '1', name:'hello' }, { expression: 'exp2', id: '2', name:'hi' } ];
+  const filterList = [{expression: 'exp1', id: '1', name: 'hello'}, {expression: 'exp2', id: '2', name: 'hi'}];
 
   beforeEach(() => {
     ({render, container} = createContainer());
   });
 
-  it('renders filterListView and filterList', ()=>{
+  it('renders filterListView and filterList', () => {
     render(<FilterListView />);
     expect(elementBySelector('#filterListView')).not.toBeNull();
     expect(elementBySelector('#filterList')).not.toBeNull();

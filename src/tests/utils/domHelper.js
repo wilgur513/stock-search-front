@@ -9,10 +9,12 @@ export const elementsBySelector = (selector) => container.querySelectorAll(selec
 
 export const createContainer = () => {
   container = document.createElement('div');
-  const render = component => ReactDOM.render(component, container);
+  const render = (component) => {
+    ReactDOM.render(component, container);
+  };
 
   return {
     container,
-    render
-  }
-}
+    render,
+  };
+};

@@ -1,10 +1,10 @@
 import React from 'react';
-import {StockSearchView} from "./components/StockSearchView";
+import {StockSearchView} from './components/StockSearchView';
 
 function App() {
   return (
-    <div> 
-      <StockSearchView/>
+    <div>
+      <StockSearchView />
     </div>
   );
 }
