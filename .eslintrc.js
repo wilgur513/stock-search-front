@@ -23,5 +23,6 @@ module.exports = {
     'require-jsdoc': 0,
     'max-len': 0,
     'no-unused-vars': 0,
+    'linebreak-style': 0,
   },
 };
