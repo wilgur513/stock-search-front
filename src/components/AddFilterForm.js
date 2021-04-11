@@ -2,9 +2,11 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {createFilterExpression} from '../utils/filterExpression';
 
-const AttributeButton = ({text}) => (
-  <input type='button' value={text} />
-);
+const AttributeButton = ({text, id, addToExpression}) => {
+  return (
+    <input type='button' value={text} onClick={() => addToExpression(id)}/>
+  );
+};
 
 const AttributeButtons = ({attributes, addToExpression}) => {
   const [number, setNumber] = useState(0);
@@ -20,7 +22,7 @@ const AttributeButtons = ({attributes, addToExpression}) => {
     <div id='attributeButtons'>
       <input type='number' id='constantNumber' onChange={changeNumber}/>
       <input type='button' id='constantNumberButton' value='상수입력' onClick={onClick}/>
-      {attributes.map((a) => <AttributeButton key={a.id} text={a.text} id={a.id}/>)}
+      {attributes.map((a) => <AttributeButton key={a.id} text={a.text} id={a.id} addToExpression={addToExpression}/>)}
     </div>
   );
 };
@@ -66,7 +68,7 @@ const FilterExpression = ({expression}) => (
 );
 
 const RemoveButton = ({removeFromExpression}) => (
-  <input type='button' value='제거' id='removeButton' onClick={removeFromExpression} />
+  <input type='button' value='지움' id='removeButton' onClick={removeFromExpression} />
 );
 
 const AddFilterButton = ({addFilter}) => (
@@ -87,7 +89,7 @@ export const AddFilterForm = ({addFilterHandler}) => {
       const result = await axios.get(process.env.REACT_APP_FETCH_ATTRIBUTE_URL);
 
       if (result.status == 200) {
-        setAttributes(result.data.attributes);
+        setAttributes(result.data);
       }
     };
 

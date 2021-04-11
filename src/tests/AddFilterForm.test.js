@@ -24,7 +24,7 @@ describe('AddFilterForm', () => {
         Promise.resolve({
           statusText: 'OK',
           status: 200,
-          data: {attributes},
+          data: attributes,
         }));
   });
 
@@ -123,7 +123,7 @@ describe('AddFilterForm', () => {
       click(elementsBySelector('#operatorButtons input[type="button"]')[0]);
       click(elementsBySelector('#operatorButtons input[type="button"]')[1]);
       click(elementBySelector('#removeButton'));
-      expect(elementBySelector('#filterExpression').textContent).toEqual('++');
+      expect(elementBySelector('#filterExpression').textContent).toEqual('+ +');
     });
 
     it('change constant number and add to expression', async () => {

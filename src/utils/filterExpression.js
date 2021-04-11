@@ -5,7 +5,7 @@ const isCompareOperator = (value) => {
 function Expression(expression=[]) {
   this.expression = expression;
 
-  this.toString = () => expression.join('');
+  this.toString = () => expression.join(' ');
 
   this.add = (value) => {
     return new Expression(this.expression.concat([value]));
